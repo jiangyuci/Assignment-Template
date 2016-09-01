@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UniMelb Assignment Template
+% Created by Yuci Jiang on 31/Aug/2016.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Head Setting
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{./sty/UniMelbAssignment}[31/08/2016]
+\typeout{UniMelb Assignment}
+\def\UniMelbversion{Version 1.0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Options Declaration 
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+\SetupKeyvalOptions{family=UniMelb, prefix=UniMelb@opt@, setkeys=\kvsetkeys}
+\newcommand{\skv}[1]{\kvsetkeys{UniMelb}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Options
+\DeclareStringOption[One]{Semester}[One]
+\DeclareStringOption[I]{AssignNo}[I]
+\DeclareStringOption[000000]{StuID}[000000]
+\DeclareStringOption[MAST00000]{SubCode}[MAST00000]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Default Options, Processing and Handle Options
+\DeclareDefaultOption{\relax}
+\ProcessKeyvalOptions*\relax
+\newcommand{\semester}{\UniMelb@opt@Semester}
+\newcommand{\assignno}{\UniMelb@opt@AssignNo}
+\newcommand{\stuid}{\UniMelb@opt@StuID}
+\newcommand{\subcode}{\UniMelb@opt@SubCode}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Required Packages
+\RequirePackage{fancyhdr,fancybox}        % personalize page header
+\RequirePackage{lastpage}                 % refer to the number of last page
+\RequirePackage{listings}                 % format source code
+\RequirePackage[toc,page,title,titletoc,header]
+              {appendix}                  % Appendix
+\RequirePackage{paralist}
+\RequirePackage{amsthm,amsfonts}
+\RequirePackage{amsmath,bm}               % AMSLaTeX
+\RequirePackage{amssymb,mathrsfs}         % AMSLaTeX sym-bols
+\usepackage{pgfpict2e}
+\RequirePackage{latexsym} 
+\RequirePackage{longtable,multirow,
+              hhline,tabularx,array,diagbox}      % tables
+\RequirePackage{flafter}
+\RequirePackage{pifont,calc}
+\RequirePackage{colortbl,booktabs}
+\RequirePackage{geometry}                 % page layout
+\RequirePackage[T1]{fontenc}
+\RequirePackage[scaled]{berasans}
+\RequirePackage{hyperref}                 % hyper referance
+\RequirePackage{natbib}                   % Different Formats of Citation
+\RequirePackage{subfig}
+\RequirePackage{booktabs}
+\RequirePackage{palatino}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor,color}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\setsansfont{Cochin}
+\setmonofont{Courier}
+\setCJKmainfont{STSongti-SC-Regular}
+\setCJKmonofont{STSongti-SC-Bold}
+\newfontfamily{\Cochin}{Cochin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Details Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----- page layout -----
+\geometry{a4paper, margin = 2.5cm}
+\usepackage{indentfirst}
+% ----- hyperref setup -----
+\hypersetup{hidelinks}
+
+% 每页图片数style: float counter
+\setcounter{totalnumber}{8}
+\setcounter{topnumber}{8}
+\setcounter{bottomnumber}{8}
+%很多人发现缺省的浮动参数过于严格了。下面的命令
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+%将浮动参数重新设置为更宽松的值。---选自《Using Import graphics in LATEX2e》
+
+%%%%%%%%%%%%%%%%%%%%
+% Bibtex
+\setcitestyle{square,super} % Optional parameter: [round,square],[super, numbers, authoryear]
+
+%%%%%%%%%%%%%%%%%%%%
+% Table & figure caption font size and face
+\renewcommand{\figurename}{Fig}
+\renewcommand{\tablename}{Tab}
+
+%%%%%%%%%%%%%%%%%%%%
+% Figure include path
+\graphicspath{{./img/}}
+
+%%%%%%%%%%%%%%%%%%%%
+% New command
+\newtheorem{Theorem}{Theorem}[section]%
+\newtheorem{Lemma}[Theorem]{Lemma}%
+\newtheorem{Corollary}[Theorem]{Corollary}%
+\newtheorem{Proposition}[Theorem]{Proposition}%
+\newtheorem{Definition}[Theorem]{Definition}%
+\newtheorem{Example}[Theorem]{Example}%
+
+%%%%%%%%%%%%%%%%%%%%
+% Define Color
+\definecolor{grey}{rgb}{0.8,0.8,0.8}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\definecolor{darkblue}{rgb}{0,0,1}
+\definecolor{purple}{rgb}{0.75,0.4,0.95}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Code List
+\def\lstbasicfont{\fontfamily{Courier}\selectfont\footnotesize}
+\lstset
+{
+% indexing
+   % numbers=left,
+   % numberstyle=\small,%
+% character display
+    showstringspaces=false,
+    showspaces=false,
+    tabsize=4,
+% style
+    frame=lines,
+    basicstyle={\footnotesize\lstbasicfont},
+    keywordstyle=\color{darkblue}\bfseries,
+    identifierstyle=,
+    commentstyle=\color{darkgreen},%\itshape,%
+    stringstyle=\color{purple}
+}
+\lstloadlanguages{C,C++,Java,Matlab,Mathematica}
+
+%%%%%%%%%%%%%%%%%%%%
+% Header and Foot
+\setcounter{page}{1}
+\pagestyle{fancy}
+\lhead{\small Mathematics and Statistics}
+\chead{}
+\rhead{\small University of Melbourne}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Maketitle
+\def\@maketitle{%
+  \newpage
+  \null
+  \hrule
+  \linespread{1}
+  \vskip 1.5em%
+  \begin{center}
+\Cochin
+    \let \footnote \thanks
+    {\LARGE The University of Melbourne \par
+    Department of Mathematics and Statistics \par
+    \subcode \ \@title \par
+     Semester \semester \par
+     Assignment \assignno \par}%
+    \vskip 1em%
+    {\large
+      \begin{tabular}[t]{c}%
+        \@author \\
+        StuID: \stuid
+      \end{tabular}\par}%
+    \vskip 1em%
+    %{\large \@date}%
+  \end{center}%
+  \par
+   \null
+  \hrule
+  \vskip 2.5em
+  }
+
+%%%%%%%%%%%%%%%%%%%%
+% Section, subsection, subsubsection setting
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                    {2.3ex \@plus.2ex}%
+                                    {\Cochin\Large}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                      {-3.25ex \@plus -1ex \@minus -.2ex}%
+                                      {-.5em}%
+                                      {\Cochin\large}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                          {-3.25ex \@plus -1ex \@minus -.2ex}%
+                                          {-.2em}%
+                                          {\Cochin\normalsiz}}
+
+\endinput
