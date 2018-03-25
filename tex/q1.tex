@@ -64,11 +64,29 @@
 \end{minipage}% fig:sact
 \end{figure}% 1st row
 
-	
-	
-	
-	
+ \begin{pspicture}(5,5)
+   %% Triangle in red:
+   \pspolygon[linecolor=red](1,1)(5,1)(1,4)
+   %% Bezier curve in green:
+   \pscurve[linecolor=green,linewidth=2pt,%
+     showpoints=true](5,5)(3,2)(4,4)(2,3)
+   %% Circle in blue with radius 1:
+   \pscircle[linecolor=blue,linestyle=dashed](3,2.5){1}
+ \end{pspicture}
 
+  \begin{pspicture*}(-7,-2)(7,2)
+   \psaxes[labels=none](0,0)(-7,-2)(7,2)        % sets up axis
+   \psplot[linecolor=blue, linewidth=1.5pt]%    % plots the sinewave
+     {-7}{7}{x 0.01745329252 div sin}           % notice the RPN expression
+   \uput[45](3.1415926,0){$\pi$}                % these are the labels
+   \uput[90](-1.570796,0){$-\pi/2$}             % \uput is a box positioned at [angle]
+   \uput[-90](1.570796,0){$\pi/2$}              % relative to (x,y) coordinate
+   \uput[-135](-3.1415926,0){$-\pi$}            % and putting { content } on the box
+   \psline[linewidth=1pt,linecolor=red,linestyle=dotted]%   % red dotted lines
+     (1.57079632,1)(1.57079632,0)
+   \psline[linewidth=1pt,linecolor=red,linestyle=dotted]%
+     (-1.57079632,-1)(-1.57079632,0)
+ \end{pspicture*}
 
 
 
