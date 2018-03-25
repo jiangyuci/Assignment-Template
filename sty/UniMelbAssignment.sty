@@ -30,12 +30,15 @@
 \newcommand{\assignno}{\UniMelb@opt@AssignNo}
 \newcommand{\stuid}{\UniMelb@opt@StuID}
 \newcommand{\subcode}{\UniMelb@opt@SubCode}
+\renewcommand{\thesubsection}{(\alph{subsection})}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Required Packages
 \RequirePackage{fancyhdr,fancybox}        % personalize page header
 \RequirePackage{lastpage}                 % refer to the number of last page
-\RequirePackage{listings}                 % format source code
+\RequirePackage{listings
+}                 % format source code
 \RequirePackage[toc,page,title,titletoc,header]
               {appendix}                  % Appendix
 \RequirePackage{paralist}
@@ -44,6 +47,9 @@
 \RequirePackage{amssymb,mathrsfs}         % AMSLaTeX sym-bols
 \usepackage{pgfpict2e}
 \RequirePackage{latexsym} 
+\RequirePackage{algorithm}
+\RequirePackage[noend]{algpseudocode}
+%\RequirePackage{caption}
 \RequirePackage{longtable,multirow,
               hhline,tabularx,array,diagbox}      % tables
 \RequirePackage{flafter}
@@ -55,11 +61,14 @@
 \RequirePackage{hyperref}                 % hyper referance
 \RequirePackage{natbib}                   % Different Formats of Citation
 \RequirePackage{subfig}
+\RequirePackage{tikz}
 \RequirePackage{booktabs}
 \RequirePackage{palatino}
 \RequirePackage{float}
 \RequirePackage{graphicx}
 \RequirePackage{xcolor,color}
+\RequirePackage{sectsty}
+\RequirePackage{courier}
 \usepackage{xeCJK}
 \setmainfont{Times New Roman}
 \setsansfont{Cochin}
@@ -67,6 +76,7 @@
 \setCJKmainfont{STSongti-SC-Regular}
 \setCJKmonofont{STSongti-SC-Bold}
 \newfontfamily{\Cochin}{Cochin}
+\newfontfamily{\OET}{Old English Text MT}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Details Settings
@@ -74,19 +84,28 @@
 % ----- page layout -----
 \geometry{a4paper, margin = 2.5cm}
 \usepackage{indentfirst}
+\setlength{\parskip}{1em}
 % ----- hyperref setup -----
 \hypersetup{hidelinks}
 
 % 每页图片数style: float counter
-\setcounter{totalnumber}{8}
-\setcounter{topnumber}{8}
-\setcounter{bottomnumber}{8}
+%\setcounter{totalnumber}{8}
+%\setcounter{topnumber}{8}
+%\setcounter{bottomnumber}{8}
 %很多人发现缺省的浮动参数过于严格了。下面的命令
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.65}
-\renewcommand{\floatpagefraction}{0.60}
+%\renewcommand{\textfraction}{0.15}
+%\renewcommand{\topfraction}{0.85}
+%\renewcommand{\bottomfraction}{0.65}
+%\renewcommand{\floatpagefraction}{0.60}
+%\renewcommand{\thesubsection}{(\alph{subsection})}
 %将浮动参数重新设置为更宽松的值。---选自《Using Import graphics in LATEX2e》
+
+%%%%%%%%%%%%%%%%%%%%
+% Algorithm
+\algblock{For}{EndFor}
+\algloopdefx{For}[3]{\textbf{for} #1 $\gets$ #2 \textbf{to} #3}
+%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%
 % Bibtex
@@ -94,8 +113,8 @@
 
 %%%%%%%%%%%%%%%%%%%%
 % Table & figure caption font size and face
-\renewcommand{\figurename}{Fig}
-\renewcommand{\tablename}{Tab}
+%\renewcommand{\figurename}{Fig}
+%\renewcommand{\tablename}{Tab}
 
 %%%%%%%%%%%%%%%%%%%%
 % Figure include path
@@ -103,41 +122,56 @@
 
 %%%%%%%%%%%%%%%%%%%%
 % New command
-\newtheorem{Theorem}{Theorem}[section]%
-\newtheorem{Lemma}[Theorem]{Lemma}%
-\newtheorem{Corollary}[Theorem]{Corollary}%
-\newtheorem{Proposition}[Theorem]{Proposition}%
-\newtheorem{Definition}[Theorem]{Definition}%
-\newtheorem{Example}[Theorem]{Example}%
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
 
 %%%%%%%%%%%%%%%%%%%%
 % Define Color
 \definecolor{grey}{rgb}{0.8,0.8,0.8}
+\definecolor{darkgrey}{rgb}{0.5,0.5,0.5}
 \definecolor{darkgreen}{rgb}{0,0.6,0}
 \definecolor{darkblue}{rgb}{0,0,1}
 \definecolor{purple}{rgb}{0.75,0.4,0.95}
+\definecolor{black}{rgb}{0,0,0}
 
 %%%%%%%%%%%%%%%%%%%%%%
 % Code List
-\def\lstbasicfont{\fontfamily{Courier}\selectfont\footnotesize}
+\def\lstbasicfont{\fontfamily{courier}\selectfont\footnotesize}
 \lstset
 {
 % indexing
-   % numbers=left,
-   % numberstyle=\small,%
+    numbers = left,
+    numberstyle = \tiny,%
+    %stepnumber = 5,
+    numbersep = 18pt,
+    numberblanklines = false,
+    numberstyle = \color{darkgrey},
 % character display
-    showstringspaces=false,
-    showspaces=false,
-    tabsize=4,
+    showstringspaces = true,
+    showspaces = false,
+    tabsize = 4,
 % style
-    frame=lines,
-    basicstyle={\footnotesize\lstbasicfont},
-    keywordstyle=\color{darkblue}\bfseries,
-    identifierstyle=,
-    commentstyle=\color{darkgreen},%\itshape,%
-    stringstyle=\color{purple}
+    frame = single,
+    framerule = 1pt,
+    rulecolor = \color{darkgrey},
+    framexleftmargin = 30pt,
+    framexrightmargin = 30pt,
+    basicstyle = \small \ttfamily,
+    keywordstyle = \color{darkblue}\bfseries,
+    identifierstyle = ,
+    commentstyle = \color{darkgreen},%\itshape,%
+    stringstyle = \color{purple},
+    % margin
+    xleftmargin = 50pt,
+    xrightmargin = 50pt,
+    breaklines = true
 }
-\lstloadlanguages{C,C++,Java,Matlab,Mathematica}
+
+\DeclareCaptionFormat{listing}{\colorbox[rgb]{1,1,1}{\parbox{\dimexpr\textwidth-2\fboxsep\relax}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,singlelinecheck=false, margin=15pt, font={bf,large}}
+
+\lstloadlanguages{C,C++,Python,R,Matlab,Mathematica}
 
 %%%%%%%%%%%%%%%%%%%%
 % Header and Foot
@@ -147,6 +181,7 @@
 \chead{}
 \rhead{\small University of Melbourne}
 \lfoot{}
+%\cfoot{\thepage\ / \pageref{LastPage}}
 \cfoot{\thepage}
 \rfoot{}
 
@@ -161,8 +196,9 @@
   \begin{center}
 \Cochin
     \let \footnote \thanks
-    {\LARGE The University of Melbourne \par
+    {\OET  \LARGE The University of Melbourne \par
     Department of Mathematics and Statistics \par
+    \Cochin
     \subcode \ \@title \par
      Semester \semester \par
      Assignment \assignno \par}%
@@ -180,20 +216,10 @@
   \hrule
   \vskip 2.5em
   }
-
 %%%%%%%%%%%%%%%%%%%%
 % Section, subsection, subsubsection setting
-\renewcommand\section{\@startsection{section}{1}{\z@}%
-                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                    {2.3ex \@plus.2ex}%
-                                    {\Cochin\Large}}
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                      {-3.25ex \@plus -1ex \@minus -.2ex}%
-                                      {-.5em}%
-                                      {\Cochin\large}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                                          {-3.25ex \@plus -1ex \@minus -.2ex}%
-                                          {-.2em}%
-                                          {\Cochin\normalsiz}}
-
+\allsectionsfont{\Cochin}
+\renewcommand{\thesection}{Question \arabic{section}}
+\newcommand*{\QEDB}{\hfill\ensuremath{\blacksquare}}%
+\newcommand*{\QEDA}{\hfill\ensuremath{\square}}%
 \endinput
