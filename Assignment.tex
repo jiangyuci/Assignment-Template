@@ -1,17 +1,52 @@
-%!TEX program = xelatex
+ %!TEX program = xelatex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % UniMelb Assignment Template
-% Created by Yuci Jiang on 31/Aug/2016.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper,11pt]{article}
-\usepackage[Semester = ONE,AssignNo = I,SubCode = MAST00000,StuID = 000000]{./sty/UniMelbAssignment}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage[Semester = 1,AssignNo = I,SubCode = MAST0000,StuID = 848031]{./sty/UniMelbAssignment}
 %\setlength\parskip{.5\baselineskip}
-\title{Mathematics and Statistics}
-\author{Johnny Appleseed} 
+\title{AAAA}
+\author{AAAA} 
 \begin{document}
 \maketitle
-%\lstinputlisting[language=Matlab]{t_64.m}
-\input{./tex/q_1}
+\input{tex/q1}
+
+%\lstinputlisting[language=Matlab,caption = tst]{./code/p23.m}
+%\QEDB
 %*********************
+% \bibliographystyle{unsrt} % Optional Parameters: plain, unsrt, alpha, abbrv
+% % plain: arranged alphabetically by author's first name 
+% % unsrt: arranged by order of citation
+% % alpha: arranged alphabetically by author's first name with year
+% % abbrv: similar to 'plain', but some of info are abbreviated
+% \bibliography{/Users/jiangyuci/Documents/Dropbox/PapersLibrary/BibLib}  
 \end{document}
 % ----- End of Document Body -----
+
+%EXAMPLE
+%\lstinputlisting[language=Matlab,caption = tst]{./code/test.m}
+
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[height = 10cm, width = 12cm]{.jpg}
+% 	\caption{}\label{fig:}
+% \end{figure}
+
+% \begin{figure}[h]
+% \centering
+% \begin{minipage}[t]{0.3\textwidth}
+% \centering
+% \includegraphics[width = 5.2cm, height = 5cm]{.jpg}
+% \caption*{}
+% \end{minipage}
+% \begin{minipage}[t]{0.3\textwidth}
+% \centering
+% \includegraphics[width = 5.2cm, height = 5cm]{.jpg}
+% \caption*{}
+% \end{minipage}
+% \caption{}\label{fig:}
+% \end{figure}

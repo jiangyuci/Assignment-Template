@@ -1,0 +1,77 @@
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+	\node (s) at (-1,1.5) [circle,draw, fill = white, scale = 0.7] {s};
+	\node (q) at (0,0) [circle,draw, fill = white, scale = 0.7] {q};
+	\node (d) at (3,0) [circle,draw, fill = white, scale = 0.7] {d};
+	\node (t) at (4,1.5) [circle,draw, fill = white, scale = 0.7] {t};
+	\node (b) at (3,3) [circle,draw, fill = white, scale = 0.7] {b};
+	\node (p) at (0,3) [circle,draw, fill = white, scale = 0.7] {p};
+	\node (a) at (1,2) [circle,draw, fill = white, scale = 0.7] {a};
+	\node (c) at (2.5,1.5) [circle,draw, fill = white, scale = 0.7] {c};
+	\draw[-latex] (a) -- (c) node [pos = 0.3, sloped] {\tiny(0,8)};
+	\draw[-latex] (a) -- (d) node [pos = 0.1, sloped] {\tiny(0,1)};
+	\draw[-latex] (b) -- (a) node [pos = 0.2, sloped] {\tiny(0,1)};
+	\draw[-latex,line width=1.25,red] (b) -- (t) node [pos = 0.2, sloped] {\tiny(3,8)};
+	\draw[-latex] (c) -- (b) node [pos = 0.3, sloped] {\tiny(0,2)};
+	\draw[-latex] (c) -- (q) node [pos = 0.1, sloped] {\tiny(0,1)};
+	\draw[-latex] (c) -- (t) node [pos = 0.3, sloped] {\tiny(0,4)};
+	\draw[-latex] (d) -- (c) node [pos = 0.3, sloped] {\tiny(0,1)};
+	\draw[-latex] (d) -- (t) node [pos = 0.2, sloped] {\tiny(0,6)};
+	\draw[-latex,line width=1.25,red] (p) -- (b) node [pos = 0.25, sloped] {\tiny(3,3)};
+	\draw[-latex] (p) to [bend right=10] node [pos = 0.2, sloped] {\tiny(0,2)} (q);
+	\draw[-latex] (q) to [bend right=10] node [pos = 0.2, sloped] {\tiny(0,1)} (p);
+	\draw[-latex] (q) -- (b) node [pos = 0.25, sloped] {\tiny(0,2)};
+	\draw[-latex] (q) -- (d) node [pos = 0.1, sloped] {\tiny(0,6)};
+	\draw[-latex] (s) -- (q) node [pos = 0.2, sloped] {\tiny(0,4)};
+	\draw[-latex,line width=1.25,red] (s) -- (p) node [pos = 0.2, sloped] {\tiny(3,6)};
+	\draw[-latex] (s) -- (a) node [pos = 0.1, sloped] {\tiny(0,9)};
+\end{tikzpicture}
+\caption{}\label{fig:spbt}
+\end{minipage}% fig:spbt
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+	\node (s) at (-1,1.5) [circle,draw, fill = white, scale = 0.7] {s};
+	\node (q) at (0,0) [circle,draw, fill = white, scale = 0.7] {q};
+	\node (d) at (3,0) [circle,draw, fill = white, scale = 0.7] {d};
+	\node (t) at (4,1.5) [circle,draw, fill = white, scale = 0.7] {t};
+	\node (b) at (3,3) [circle,draw, fill = white, scale = 0.7] {b};
+	\node (p) at (0,3) [circle,draw, fill = white, scale = 0.7] {p};
+	\node (a) at (1,2) [circle,draw, fill = white, scale = 0.7] {a};
+	\node (c) at (2.5,1.5) [circle,draw, fill = white, scale = 0.7] {c};
+	\draw[-latex,line width=1.25,red] (a) -- (c) node [pos = 0.3, sloped] {\tiny(4,8)};
+	\draw[-latex] (a) -- (d) node [pos = 0.1, sloped] {\tiny(0,1)};
+	\draw[-latex] (b) -- (a) node [pos = 0.2, sloped] {\tiny(0,1)};
+	\draw[-latex] (b) -- (t) node [pos = 0.2, sloped] {\tiny(3,8)};
+	\draw[-latex] (c) -- (b) node [pos = 0.3, sloped] {\tiny(0,2)};
+	\draw[-latex] (c) -- (q) node [pos = 0.1, sloped] {\tiny(0,1)};
+	\draw[-latex,line width=1.25,red] (c) -- (t) node [pos = 0.3, sloped] {\tiny(4,4)};
+	\draw[-latex] (d) -- (t) node [pos = 0.2, sloped] {\tiny(0,6)};
+	\draw[-latex] (d) -- (c) node [pos = 0.3, sloped] {\tiny(0,1)};
+	\draw[-latex] (p) -- (b) node [pos = 0.25, sloped] {\tiny(3,3)};
+	\draw[-latex] (p) to [bend right=10] node [pos = 0.2, sloped] {\tiny(0,2)} (q);
+	\draw[-latex] (q) to [bend right=10] node [pos = 0.2, sloped] {\tiny(0,1)} (p);
+	\draw[-latex] (q) -- (b) node [pos = 0.25, sloped] {\tiny(0,2)};
+	\draw[-latex] (q) -- (d) node [pos = 0.1, sloped] {\tiny(0,6)};
+	\draw[-latex] (s) -- (q) node [pos = 0.2, sloped] {\tiny(0,4)};
+	\draw[-latex] (s) -- (p) node [pos = 0.2, sloped] {\tiny(3,6)};
+	\draw[-latex,line width=1.25,red] (s) -- (a) node [pos = 0.1, sloped] {\tiny(4,9)};
+\end{tikzpicture}
+\caption{}\label{fig:sact}
+\end{minipage}% fig:sact
+\end{figure}% 1st row
+
+	
+	
+	
+	
+
+
+
+
+
+
+
